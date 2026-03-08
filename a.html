@@ -1084,8 +1084,52 @@
     <p id="statusMessage"></p>
 
     <div class="section" id="endCodeSection">
-        <div class="section-title" data-lang="endSectionTitle">3. Push-off Configuration (Advanced)</div>
-        <p class="help-text" data-lang="endSectionHelp">Push direction is automatically detected from your file. You can click the zones in the bed preview below to change it manually. Note: In simple mode, push direction is locked to the auto-detected value. In advanced mode, you can change it but will see a warning if it differs from the auto-detected direction.</p>
+        <div class="section-title" data-lang="endSectionTitle">3. Auto-Ejection Configuration (InfiniMod)</div>
+        <p class="help-text" style="margin-bottom: 12px;">Configure automatic part ejection using InfiniMod-style cooling and pushing sequence.</p>
+        
+        <div style="background: var(--input); padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.85rem; border-left: 4px solid var(--accent);">
+            <strong style="color: var(--accent-bright);">ℹ️ InfiniMod Auto-Ejection:</strong> Automatically cools, vibrates, and pushes parts off the bed for continuous printing. Based on Factorian Designs &amp; OpenScan research.
+        </div>
+        
+        <div class="row">
+            <div class="col">
+                <label for="ejectCooldownTemp">Bed Cooldown Target (°C)</label>
+                <input type="number" id="ejectCooldownTemp" value="20" min="15" max="50" step="1">
+                <p class="help-text">Temperature bed must reach before ejection begins (default: 20°C). Lower = better part release but slower.</p>
+            </div>
+            <div class="col">
+                <label for="ejectCooldownTime">Max Cooldown Wait (minutes)</label>
+                <input type="number" id="ejectCooldownTime" value="60" min="5" max="120" step="5">
+                <p class="help-text">Maximum time to wait for bed to cool (default: 60 min). Prevents infinite loops if cooling fails.</p>
+            </div>
+        </div>
+
+        <div class="checkbox-container" style="margin-top: 12px;">
+            <input type="checkbox" id="enableEjectionVibrate" checked>
+            <label for="enableEjectionVibrate">
+                <span>Enable Bed Vibration (M970 Commands)</span>
+            </label>
+            <p class="help-text" style="margin-top: 4px; margin-left: 28px;">Vibrates build plate to help loosen printed parts. Uses Bambu Lab M970 vibration commands.</p>
+        </div>
+
+        <div class="checkbox-container" style="margin-top: 12px;">
+            <input type="checkbox" id="enableEjectionNozzlePush" checked>
+            <label for="enableEjectionNozzlePush">
+                <span>Enable Nozzle Push-off</span>
+            </label>
+            <p class="help-text" style="margin-top: 4px; margin-left: 28px;">Uses nozzle/gantry to mechanically push parts off plate after cooling &amp; vibration.</p>
+        </div>
+
+        <div id="ejectCodeSection" class="code-section" style="margin-top: 20px; display: none;">
+            <div class="code-header">
+                <div class="code-title">Auto-Ejection G-code (End Loop)</div>
+                <p class="code-desc">This code runs at the end of each loop before starting the next print. Customize vibration and push parameters.</p>
+            </div>
+            <div class="code-actions"><button type="button" class="btn-pill" onclick="copyCode('ejectCode')">Copy G-code</button></div>
+            <textarea id="ejectCode" class="code-textarea" readonly=""></textarea>
+        </div>
+        
+        <div class="section-title" data-lang="endSectionTitle" style="margin-top: 20px;">4. Push-off Configuration (Advanced)</div>
         
         
         <div class="row" style="margin-top: 15px;">
