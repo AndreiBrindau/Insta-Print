@@ -30,23 +30,24 @@ class InfiniModGenerator:
     M970_VIBRATE_PLATE = "M970.3 Q1 A7 K0 O2      ; vibrate printbed"
     M970_VIBRATE_AGGRESSIVE = "M970 Q0 A10 B50 C90 H15 K0 M20 O3   ; vibrate printbed"
     
-    # Push-off movement constants (P1/P1S specific - Y-AXIS PUSH towards FRONT)
-    # Push parts FORWARD towards the front of the printer (towards camera)
-    # Y-axis: bed moves, gantry stationary - ejects parts off front edge
-    PUSH_NOZZLE_APPROACH = "G1 X128 Y240 F12000 ; Move to back side of bed"
+    # Push-off movement constants (A1/A1M specific - COORDINATED X-POSITION + Y-MOVEMENT)
+    # Optimized for A1/A1M: Tool head moves to position, then bed moves to push parts off
+    # RIGHT → MIDDLE → LEFT with synchronized bed movement for complete ejection
+    PUSH_NOZZLE_APPROACH = "G1 X128 Y240 F12000 ; Move to home position"
     PUSH_NOZZLE_HEIGHT = "G1 Z2      ; Move Z to 2mm (near bed, safe height)"
     
-    # Y-axis push motions: Bed moves FORWARD to eject parts off front edge
-    # This pushes parts towards camera/front of printer
+    # A1/A1M coordinated push sequence: Nozzle position + Bed movement
+    # Each step: Move tool head to position, then bed moves to push parts off
     PUSH_NOZZLE_MOTION = [
-        "G1 X128 Y20 F300     ; Push motion 1 (Y-axis FORWARD, slow)",
-        "G1 X128 Y240 F3000   ; Return BACK fast",
-        "G1 X80 Y20 F300      ; Push from LEFT side",
-        "G1 X80 Y240 F3000    ; Return BACK fast",
-        "G1 X176 Y20 F300     ; Push from RIGHT side",
-        "G1 X176 Y240 F3000   ; Return BACK fast",
-        "G1 X128 Y10 F300     ; Final push (far FORWARD)",
-        "G1 X128 Y240 F3000   ; Return to safe BACK position"
+        "G1 X220 Y240 F3000   ; Move tool head to RIGHT side of bed",
+        "G1 X220 Y10 F300     ; Bed pushes back (parts ejected by nozzle pressure)",
+        "G1 X220 Y240 F3000   ; Bed returns to home",
+        "G1 X128 Y240 F3000   ; Move tool head to MIDDLE of bed",
+        "G1 X128 Y10 F300     ; Bed pushes back (middle sweep)",
+        "G1 X128 Y240 F3000   ; Bed returns to home",
+        "G1 X20 Y240 F3000    ; Move tool head to LEFT side of bed",
+        "G1 X20 Y10 F300      ; Bed pushes back (final left sweep)",
+        "G1 X128 Y240 F3000   ; Return to home position (center, back)"
     ]
     
     def __init__(self, 
@@ -60,14 +61,14 @@ class InfiniModGenerator:
         
         Args:
             cooldown_temp: Target bed temperature (°C) - lower = faster release
-            cooldown_wait_time: Maximum wait time (minutes) - NOW DEFAULT 5 MIN (was 15)
+            cooldown_wait_time: Wait time in minutes (range: 1-5) - FAST ejection cycles!
             enable_vibrate: Enable M970 vibration commands
             enable_nozzle_push: Enable nozzle push mechanism
             push_speed: Speed of push motion (mm/min) - 300 for safety
             bed_tilt_angle: Manual bed tilt angle in degrees (for reference, ~20-30 deg)
         """
         self.cooldown_temp = max(15, min(50, cooldown_temp))
-        self.cooldown_wait_time = max(1, min(120, cooldown_wait_time))  # Can be as low as 1 min now
+        self.cooldown_wait_time = max(1, min(5, cooldown_wait_time))  # Range: 1-5 minutes for fast cycles
         self.enable_vibrate = enable_vibrate
         self.enable_nozzle_push = enable_nozzle_push
         self.push_speed = max(50, min(3000, push_speed))
@@ -119,15 +120,16 @@ M400
         return code
     
     def generate_nozzle_push_sequence(self) -> str:
-        """Generate nozzle push-off G-code using Y-AXIS motion (bed push).
+        """Generate nozzle push-off G-code using A1/A1M coordinated X+Y motion.
         
-        KEY: Uses Y-axis (bed) motion to push parts FORWARD to FRONT
-        - Y-axis: Bed moves forward (Y decreases from 240 to 20)
-        - Parts eject off FRONT edge of printer (towards camera)
-        - Multiple X-positions (left, center, right) for uniform ejection
+        KEY: Combines tool head position with bed movement for optimal ejection
+        - RIGHT position → Bed pushes back (Y moves toward home)
+        - MIDDLE position → Bed pushes back (sweeps center)
+        - LEFT position → Bed pushes back (final coverage)
+        - Coordinated approach: Nozzle blocks part, bed movement ejects it
         
         Returns:
-            G-code string for Y-axis bed push sequence (forward to front)
+            G-code string for coordinated X+Y push-off sequence
         """
         if not self.enable_nozzle_push:
             return "; Nozzle push disabled\n"
@@ -136,20 +138,20 @@ M400
                                    else motion 
                                    for motion in self.PUSH_NOZZLE_MOTION])
         
-        code = f"""; --- PART 3: Y-AXIS BED PUSH (Forward to Front) ---
-; PUSH FORWARD: Bed moves towards FRONT, parts eject off front edge (towards camera)
-; Gantry stays at Z2mm, bed does the pushing
-; Multiple X-passes (left, center, right) ensure complete ejection
+        code = f"""; --- PART 3: COORDINATED PUSH-OFF (A1/A1M Style) ---
+; COORDINATED X+Y MOTION: Tool head positions, bed moves to eject
+; RIGHT → MIDDLE → LEFT with synchronized bed movement
+; Nozzle blocks part, bed motion ejects off plate
 
-G1 X128 Y240 F12000  ; Position gantry center, bed at BACK
+G1 X128 Y240 F12000  ; Move to home position
 G1 Z5 F1200         ; Raise nozzle to safe height
 
 ; Position for push
 {self.PUSH_NOZZLE_APPROACH}
 {self.PUSH_NOZZLE_HEIGHT}
 
-; Execute Y-axis push motions (bed moves FORWARD, pushing parts to FRONT)
-; Multiple X-positions for thorough ejection across bed
+; Execute coordinated push motions (X-position + Y-bed movement)
+; RIGHT side push, MIDDLE sweep, LEFT side push
 {move_sequence}
 
 ; Return to home position
@@ -245,7 +247,7 @@ IMPORTANT: Tilt your printer ~30° BEFORE running auto-ejection!
            Gravity helps parts slide off. Use a wedge or stand.
 
 Examples:
-  # FASTEST DEFAULT - 5 min cooldown, 30° tilt reference
+  # FASTEST DEFAULT - 5 min cooldown, 30° tilt, RIGHT→MIDDLE→LEFT push
   python gcode_infinimod_generator.py part.gcode -o part_auto.gcode
   
   # Ultra-fast for small parts (2 min wait only!)
@@ -260,8 +262,9 @@ Examples:
   # Slower push for delicate models
   python gcode_infinimod_generator.py part.gcode -o part_auto.gcode -s 200
 
-NOTE: Generator uses Y-AXIS push (bed moves forward)
-      Default: 5 min cooldown (down from 15!), 30° tilt recommended
+NOTE: Generator uses COORDINATED X+Y PUSH (A1/A1M optimized)
+      Tool head: RIGHT → MIDDLE → LEFT with synchronized bed movement
+      Default: 5 min cooldown, 30° tilt recommended
         """
     )
     
@@ -272,15 +275,15 @@ NOTE: Generator uses Y-AXIS push (bed moves forward)
     parser.add_argument('-t', '--temp', type=int, default=20,
                        help='Target cooldown temperature in °C (default: 20, range: 15-50). LOWER TEMP = FASTER RELEASE (e.g., 18°C)')
     parser.add_argument('-w', '--wait', type=int, default=5,
-                       help='Max cooldown wait time in minutes (default: 5, range: 1-120). NOW ONLY 5 MIN! (was 15)')
+                       help='Cooldown wait time in minutes (default: 5, range: 1-5 min). FAST cycles! Lower = quicker ejection')
     parser.add_argument('-s', '--speed', type=int, default=300,
-                       help='Push-off Y-axis speed in mm/min (default: 300, range: 50-3000). Pushes FORWARD to FRONT!')
+                       help='Coordinated push speed in mm/min (default: 300, range: 50-3000). Controls X+Y movement speed for RIGHT→MIDDLE→LEFT sequence')
     parser.add_argument('--tilt', type=int, default=30,
                        help='Bed tilt angle for reference in comments (default: 30°, range: 0-45°). PHYSICALLY TILT YOUR PRINTER ~30° BEFORE RUNNING!')
     parser.add_argument('--no-vibrate', action='store_true',
                        help='Disable bed vibration (M970 commands)')
     parser.add_argument('--no-push', action='store_true',
-                       help='Disable Y-axis forward push mechanism')
+                       help='Disable coordinated push mechanism (RIGHT→MIDDLE→LEFT)')
     parser.add_argument('-n', '--loops', type=int, default=1,
                        help='Number of loops (default: 1)')
     

@@ -1098,9 +1098,9 @@
                 <p class="help-text">Temperature bed must reach before ejection begins (default: 20°C). Lower = better part release but slower.</p>
             </div>
             <div class="col">
-                <label for="ejectCooldownTime">Max Cooldown Wait (minutes)</label>
-                <input type="number" id="ejectCooldownTime" value="60" min="5" max="120" step="5">
-                <p class="help-text">Maximum time to wait for bed to cool (default: 60 min). Prevents infinite loops if cooling fails.</p>
+                <label for="ejectCooldownTime">Cooldown Wait Time (1-5 minutes)</label>
+                <input type="number" id="ejectCooldownTime" value="5" min="1" max="5" step="1">
+                <p class="help-text">Time to wait for bed to cool (default: 5 min, range: 1-5 min). Fast cycles! Choose based on part material.</p>
             </div>
         </div>
 
@@ -1137,7 +1137,7 @@
                 <label for="cooldownTempInput" data-lang="cooldownTempLabel">Target Bed Temp (°C)</label>
                 <input type="number" id="cooldownTempInput" value="18" min="15" max="90" step="1" oninput="saveSettings(); checkCooldownWarning(); updateEndCodeTextareas();">
                 <p id="cooldownWarningMessage" style="color:var(--danger); margin-top: 5px; font-size: 0.75rem; display: none; font-weight: 600;"></p>
-                <p class="help-text" data-lang="cooldownHelp">Default 18°C (Approx. 23°C on the plate). Wait max 60 min.</p>
+                <p class="help-text" data-lang="cooldownHelp">Default 18°C (Approx. 23°C on the plate). Wait 1-5 min for fast cycles.</p>
             </div>
             
             <div class="col">
@@ -1526,7 +1526,7 @@
                                 <ul>
                                     <li>Default: 18°C (Approx. 23°C on the plate)</li>
                                     <li>Range: 15°C - 90°C</li>
-                                    <li>Wait max 60 min for bed to cool before push-off sequence begins</li>
+                                    <li>Wait 1-5 min for bed to cool before push-off sequence begins (fast cycles!)</li>
                                     <li>Warning shown if set above 35°C (increases risk of sticking)</li>
                                 </ul>
                             </li>
@@ -4219,7 +4219,7 @@ M960 S5 P0 ; turn off logo lamp
             resourcesLink: "", 
             endSectionTitle: "3. Push-off Configuration (Advanced)",
             endSectionHelp: "Push direction is automatically detected from your file. You can click the zones in the bed preview below to change it manually. Note: In simple mode, push direction is locked to the auto-detected value. In advanced mode, you can change it but will see a warning if it differs from the auto-detected direction.",
-            cooldownTempLabel: "Target Bed Temp (°C)", cooldownHelp: "Default 18°C (Approx. 23°C on the plate). Wait max 60 min.", cooldownRiskWarning: `Warning: Target > ${COOLDOWN_WARNING_THRESHOLD}°C increases risk of sticking.`,
+            cooldownTempLabel: "Target Bed Temp (°C)", cooldownHelp: "Default 18°C (Approx. 23°C on the plate). Wait 1-5 min for fast cycles.", cooldownRiskWarning: `Warning: Target > ${COOLDOWN_WARNING_THRESHOLD}°C increases risk of sticking.`,
             zOffsetLabel: "Z Push Offset (mm)", zOffsetApply: "Apply", zOffsetHelp: "Default 30mm below top (P1). A1 Factorian logic uses 40mm in the automated calculation.", zOffsetWarning: "⚠️ Advanced: Incorrect values can cause collisions.",
             zOffsetErrorRange: "Offset must be between 5 mm and 120 mm.", zOffsetApplied: "Offset updated.", selectDirectionLabel: "Selected Push Direction:",
             optLeft: "Left", optCenter: "Center", optRight: "Right", endCenterTitle: "Center Push End G-code", endCenterDesc: "Pushes model from center zone towards front. Z height calculated automatically.",
