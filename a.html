@@ -521,6 +521,93 @@
         .file-size-estimate strong {
             color: var(--accent);
         }
+
+        /* Upload help photo book */
+        .upload-photo-book {
+            display: block;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+        .upload-photo-book.visible { animation: fadeIn 0.5s ease-out; }
+        .upload-photo-book h3 {
+            margin: 0 0 12px;
+            color: var(--text);
+            font-size: 1rem;
+        }
+        .upload-photo-book-grid {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 100%;
+            gap: 10px;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            padding: 2px 0 8px;
+        }
+        .upload-photo-book figure {
+            margin: 0;
+        }
+        .upload-photo-book img {
+            display: block;
+            width: 100%;
+            height: 360px;
+            object-fit: contain;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+        }
+        .upload-photo-book figcaption {
+            margin-top: 6px;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.45;
+            text-align: center;
+        }
+        .upload-photo-book-description {
+            margin: 12px 0 0;
+            color: var(--muted);
+            font-size: 0.82rem;
+            line-height: 1.5;
+        }
+        .upload-photo-book-carousel {
+            position: relative;
+        }
+        .upload-photo-book-arrow {
+            position: absolute;
+            top: 50%;
+            z-index: 1;
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            background: rgba(13, 17, 23, 0.9);
+            color: var(--text);
+            font-size: 1.4rem;
+            line-height: 1;
+            cursor: pointer;
+            transform: translateY(-50%);
+        }
+        .upload-photo-book-arrow:hover {
+            border-color: var(--accent-bright);
+            color: var(--accent-bright);
+        }
+        .upload-photo-book-arrow-left { left: 6px; }
+        .upload-photo-book-arrow-right { right: 6px; }
+        @media (max-width: 720px) {
+            .upload-photo-book-grid {
+                grid-auto-columns: 100%;
+            }
+            .upload-photo-book img {
+                height: 220px;
+            }
+        }
+        @media (max-width: 420px) {
+            .upload-photo-book-grid {
+                grid-template-columns: 1fr;
+            }
+        }
         
         /* Advanced Settings Toggle */
         .advanced-toggle-container {
@@ -989,11 +1076,33 @@
                     📄 G-code Files
                 </h4>
                 <ol style="margin: 0; padding-left: 20px; line-height: 1.8;">
+                    <li style="margin-bottom: 8px;">Open your model in Bambu Studio</li>
+                    <li style="margin-bottom: 8px;">Select your printer and prepare the build plate</li>
+                    <li style="margin-bottom: 8px;">Add Test Line <i>Shown Below</i></li>
                     <li style="margin-bottom: 8px;">Slice your model in Bambu Studio (any G-code file works - Insta-Print adds start and end code automatically)</li>
                     <li style="margin-bottom: 8px;">Click <strong>"File"</strong> in the menu bar</li>
                     <li style="margin-bottom: 8px;">Select <strong>"Export"</strong> → <strong>"Export G-Code"</strong></li>
                     <li style="margin-bottom: 0;">Upload the exported G-code file to Insta-Print</li>
                 </ol>
+                <div id="uploadPhotoBook" class="upload-photo-book" aria-label="Bambu Studio photo guide">
+                    <h3>Test Line Setup</h3>
+                    <div class="upload-photo-book-carousel">
+                        <button type="button" class="upload-photo-book-arrow upload-photo-book-arrow-left" onclick="scrollPhotoBook(-1)" aria-label="Previous photo">&#8249;</button>
+                        <div class="upload-photo-book-grid" id="uploadPhotoBookGrid">
+                            <figure><a href="1.png" target="_blank" rel="noopener noreferrer"><img src="1.png" alt="Bambu Studio printer and build plate setup"></a><figcaption>1. Right click on the plate and click <i>Add Primitive</i></figcaption></figure>
+                            <figure><a href="2.png" target="_blank" rel="noopener noreferrer"><img src="2.png" alt="Bambu Studio build plate with a model"></a><figcaption>2. Then click add cube</figcaption></figure>
+                            <figure><a href="3.png" target="_blank" rel="noopener noreferrer"><img src="3.png" alt="Bambu Studio object transform controls"></a><figcaption>3. Move it to the edge of the plate</figcaption></figure>
+                            <figure><a href="4.png" target="_blank" rel="noopener noreferrer"><img src="4.png" alt="Bambu Studio model placement on the build plate"></a><figcaption>4. Click <i>S</i> on your keyboard while having the cube selected, then click at <i>World Cordinates</i> and select <i>Object Cordinates</i></figcaption></figure>
+                            <figure><a href="5.png" target="_blank" rel="noopener noreferrer"><img src="5.png" alt="Bambu Studio final model view before printing"></a><figcaption>5. Scale the cube to the desired size in the photo</figcaption></figure>
+                        </div>
+                        <button type="button" class="upload-photo-book-arrow upload-photo-book-arrow-right" onclick="scrollPhotoBook(1)" aria-label="Next photo">&#8250;</button>
+                    </div>
+                    <div id="uploadPhotoBookZoom" class="upload-photo-book-zoom" aria-hidden="true">
+                        
+                        <span id="uploadPhotoBookZoomLabel" class="upload-photo-book-zoom-label"></span>
+                    </div>
+                    <p class="upload-photo-book-description">These pictures show how to prepare your Test Line in Bambu Studio. Insta-Print does not add the usual test or purge line at the front of the bed, so enable a brim before slicing to create a clean first layer and replace that line or follow the pictures.</p>
+                </div>
                 
             </div>
             
@@ -1019,7 +1128,7 @@
         <div class="section-title" data-lang="step1Title">1. Upload File</div>
         <div class="file-upload-area" id="fileUploadArea">
             <input type="file" id="fileInput" accept=".gcode,.gco,.g,.txt,.3mf" onchange="validateFileImmediate()" style="display: none;">
-            <label for="fileInput" style="display: inline-block; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 10px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(230, 57, 70, 0.3);">
+            <label for="fileInput" onclick="document.getElementById('fileInput').click()" style="display: inline-block; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 8px; cursor: pointer; font-weight: 600; margin-bottom: 10px; transition: all 0.2s; box-shadow: 0 2px 4px rgba(230, 57, 70, 0.3);">
                 📁 Browse Files
             </label>
             <p style="margin: 10px 0 0; font-size: 0.9rem; color: var(--muted);">or drag and drop your G-code or 3MF file here</p>
@@ -4720,7 +4829,6 @@ M400 ; Wait for all motion to complete
     function setupDragAndDrop() {
         const uploadArea = document.getElementById("fileUploadArea");
         const fileInput = document.getElementById("fileInput");
-        
         ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
             uploadArea.addEventListener(eventName, preventDefaults, false);
         });
@@ -4751,6 +4859,50 @@ M400 ; Wait for all motion to complete
                 validateFileImmediate();
             }
         }, false);
+    }
+
+    function toggleUploadPhotoBook(isVisible) {
+        const photoBook = document.getElementById("uploadPhotoBook");
+        if (photoBook) {
+            photoBook.classList.toggle("visible", isVisible);
+        }
+    }
+
+    function scrollPhotoBook(direction) {
+        const photoBookGrid = document.getElementById("uploadPhotoBookGrid");
+        if (photoBookGrid) {
+            const slide = photoBookGrid.querySelector('figure');
+            const slideWidth = slide ? slide.getBoundingClientRect().width + 10 : photoBookGrid.clientWidth;
+            photoBookGrid.scrollBy({ left: direction * slideWidth, behavior: "smooth" });
+        }
+    }
+
+    function showPhotoBookZoom(image) {
+        const zoom = document.getElementById("uploadPhotoBookZoom");
+        const zoomImage = document.getElementById("uploadPhotoBookZoomImage");
+        const zoomLabel = document.getElementById("uploadPhotoBookZoomLabel");
+        if (!zoom || !zoomImage) return;
+
+        zoomImage.src = image.src;
+        zoomImage.alt = image.alt;
+        if (zoomLabel) zoomLabel.textContent = image.closest('figure').querySelector('figcaption').textContent;
+        zoom.classList.add("visible");
+        zoom.setAttribute("aria-hidden", "false");
+    }
+
+    function hidePhotoBookZoom() {
+        const zoom = document.getElementById("uploadPhotoBookZoom");
+        if (zoom) {
+            zoom.classList.remove("visible");
+            zoom.setAttribute("aria-hidden", "true");
+        }
+    }
+
+    function setupPhotoBookZoom() {
+        document.querySelectorAll('#uploadPhotoBookGrid figure img').forEach(image => {
+            image.addEventListener('mouseenter', () => showPhotoBookZoom(image));
+            image.addEventListener('mouseleave', hidePhotoBookZoom);
+        });
     }
 
     /**
@@ -4874,6 +5026,7 @@ M400 ; Wait for all motion to complete
         }
 
         setupDragAndDrop();
+        setupPhotoBookZoom();
         updateEndCodeTextareas();
         updateStartCodeTextarea(null); // Show template on page load
         checkCooldownWarning();
@@ -5834,6 +5987,7 @@ M400 ; Wait for all motion to complete
         
         lastValidationStatus = { key: null, color: null };
         lastDebugData = null; 
+        toggleUploadPhotoBook(false);
 
         if (!fileInput.files.length) {
             statusEl.style.display = "none";
@@ -6352,6 +6506,7 @@ M400 ; Wait for all motion to complete
                     statusEl.textContent = dict["validationSuccess3MF"] || "File verified: Valid 3MF file detected. Start and end code will be added automatically.";
                     statusEl.style.color = "var(--accent)";
                     statusEl.style.display = "block";
+                    toggleUploadPhotoBook(true);
                     // Ensure button is enabled - use setTimeout to ensure DOM updates are complete
                     setTimeout(() => {
                         genBtn.disabled = false;
@@ -6778,6 +6933,10 @@ M400 ; Wait for all motion to complete
                     statusEl.textContent = dict[validationKey] || validationKey;
                     statusEl.style.color = validationColor;
                     statusEl.style.display = "block";
+
+                    if (validationColor !== "var(--danger)") {
+                        toggleUploadPhotoBook(true);
+                    }
 
                     if (validationColor === "var(--danger)") {
                         genBtn.disabled = true;
