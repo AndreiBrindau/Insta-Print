@@ -10,6 +10,21 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{--ink:#171717;--paper:#fff8ed;--orange:#ff5738;--blue:#284cff;--yellow:#ffd84f;--green:#d9e6b1;--muted:#514d47}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}.nav{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;min-height:72px;padding:0 7%;border-bottom:2px solid var(--ink);background:#fff8edee;backdrop-filter:blur(10px)}.brand img{display:block;width:176px;height:auto}.nav-links{display:flex;gap:28px;font-size:13px;font-weight:600}.nav-links a:hover{text-decoration:underline;text-underline-offset:5px}.nav-shop{padding:10px 16px;border:1px solid var(--ink);font-size:13px}.hero{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:44px;min-height:570px;padding:72px 8%;background:var(--orange);color:white}.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px}.hero h1{max-width:720px;margin:22px 0;font:700 clamp(52px,7vw,88px)/.98 'Space Grotesk',sans-serif}.hero-copy{max-width:490px;font-size:17px;line-height:1.7}.hero-art{position:relative;display:grid;place-items:center;min-height:340px;border:2px solid var(--ink);background:#ff795f;box-shadow:10px 10px 0 var(--ink);transform:rotate(2deg)}.sun{position:absolute;width:min(72%,270px);aspect-ratio:1;border-radius:50%;background:var(--yellow)}.print-object{position:relative;width:150px;height:190px;margin-top:42px;border:2px solid var(--ink);border-radius:48% 48% 18% 18%;background:repeating-linear-gradient(90deg,#d9e6b1 0 12px,#b9c98a 13px 16px);box-shadow:8px 10px 0 #17171722}.object-rim{position:absolute;top:-14px;left:-8px;width:162px;height:30px;border:2px solid var(--ink);border-radius:50%;background:#e6efc9}.hero-art-label{position:absolute;right:-1px;bottom:26px;padding:12px 16px;border:2px solid var(--ink);background:white;color:var(--ink);font-size:12px;font-weight:700}.story{padding:80px 10%;background:var(--paper)}.story-inner{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;max-width:1100px;margin:0 auto}.story-mark{display:grid;place-items:center;min-height:230px;border:2px solid var(--ink);background:var(--green);box-shadow:8px 8px 0 var(--ink);font:700 110px 'Space Grotesk'}.story h2,.process h2{margin:12px 0 20px;font:700 46px/1.05 'Space Grotesk',sans-serif}.story p{max-width:650px;color:var(--muted);font-size:16px;line-height:1.8}.process{padding:76px 8%;border-block:2px solid var(--ink);background:var(--blue);color:white}.process-inner{max-width:1100px;margin:auto}.process h2{margin-top:14px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:34px}.step{padding-top:18px;border-top:2px solid var(--yellow)}.step-number{color:var(--yellow);font-weight:700}.step h3{margin:10px 0;font:700 22px 'Space Grotesk',sans-serif}.step p{max-width:300px;color:#e1e5ff;line-height:1.65}.contact{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:48px 8%;background:var(--yellow)}.contact h2{margin:0 0 8px;font:700 30px 'Space Grotesk',sans-serif}.contact p{margin:0;color:var(--muted)}.contact-link{padding:14px 18px;border:2px solid var(--ink);background:var(--orange);font-weight:700}.contact-link:hover{background:var(--blue);color:white}footer{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:24px 8%;border-top:2px solid var(--ink);font-size:13px}.footer-links{display:flex;gap:20px}@media(max-width:760px){.nav{padding:0 5%}.brand img{width:145px}.nav-links{gap:14px}.hero{grid-template-columns:1fr;gap:34px;padding:54px 7%}.hero-art{min-height:280px}.story{padding:60px 7%}.story-inner{grid-template-columns:1fr;gap:34px}.story-mark{min-height:170px}.process{padding:58px 7%}.steps{grid-template-columns:1fr;gap:24px}.contact{align-items:flex-start;flex-direction:column;padding:38px 7%}footer{flex-wrap:wrap;padding:22px 7%}}@media(max-width:480px){.nav-links a[href="#process"]{display:none}.hero h1{font-size:52px}.hero-art{min-height:240px}.print-object{transform:scale(.85)}.story h2,.process h2{font-size:38px}.footer-links{gap:12px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.request-launch{position:fixed;z-index:10;right:24px;bottom:24px;display:flex;align-items:center;gap:10px;padding:16px 20px;border:2px solid #171717;background:#ffd84f;color:#171717;box-shadow:5px 5px 0 #171717;font:700 13px 'DM Sans',sans-serif;letter-spacing:.5px;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .35s,filter .35s,visibility 0s}
+.request-launch:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #171717}
+.request-dialog{width:min(560px,calc(100% - 28px));max-height:calc(100% - 28px);margin:auto;padding:0;border:2px solid #171717;background:#fff8ed;color:#171717;box-shadow:10px 10px 0 #171717}
+.request-dialog::backdrop{background:#151515aa;backdrop-filter:blur(3px)}
+.request-content{padding:30px}
+.request-top{display:flex;justify-content:space-between;align-items:start;gap:20px}
+.request-top h2{margin:4px 0 8px;font:700 36px/1.05 'Space Grotesk',sans-serif;letter-spacing:0}
+.request-top p{margin:0 0 22px;color:#514d47;line-height:1.55}
+.request-close{width:38px;height:38px;flex:0 0 38px;border:2px solid #171717;background:transparent;font-size:22px;cursor:pointer}
+.request-instructions{display:grid;gap:10px}
+.request-instructions p{margin:0;color:#514d47;line-height:1.5}
+.request-email{width:fit-content;color:#171717;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.request-template{margin:0;padding:16px;border:2px solid #171717;background:#ffd84f;color:#171717;font:500 14px/1.8 'DM Sans',sans-serif;white-space:pre-wrap}
+@media(max-width:800px){.request-launch{right:14px;bottom:14px}}
+@media(max-width:520px){.request-launch{right:12px;bottom:12px;padding:14px 16px}.request-content{padding:22px}.request-top h2{font-size:31px}}
 </style>
 </head>
 <body>
@@ -18,8 +33,33 @@
 <section class="hero"><div><div class="eyebrow">A little about Insta-Print</div><h1>Small ideas, made one layer at a time.</h1><p class="hero-copy">We make thoughtful, made-to-order pieces designed to bring a little more character to everyday spaces.</p></div><div class="hero-art" role="img" aria-label="Illustration of a layered printed planter"><div class="sun"></div><div class="print-object"><div class="object-rim"></div></div><div class="hero-art-label">DESIGNED WITH INTENTION</div></div></section>
 <section class="story"><div class="story-inner"><div class="story-mark" aria-hidden="true">↗</div><div><div class="eyebrow">Less waste, more thoughtful things</div><h2>Made for real life.<br>Printed when wanted.</h2><p>Each Insta-Print piece is made to order using plant-based PLA. Printing one piece at a time helps us focus on useful details and make what people actually want, instead of filling shelves with excess.</p><p>From a small home object to a custom idea, we believe the best things earn their place in your everyday routine.</p></div></div></section>
 <section class="process" id="process"><div class="process-inner"><div class="eyebrow">From idea to object</div><h2>A simple process, layer by layer.</h2><div class="steps"><article class="step"><div class="step-number">01</div><h3>Choose or imagine</h3><p>Browse the collection or tell us about the piece you would love to have made.</p></article><article class="step"><div class="step-number">02</div><h3>Make it yours</h3><p>Share the model, color, quantity, and any details that will help us understand your idea.</p></article><article class="step"><div class="step-number">03</div><h3>Printed with care</h3><p>We prepare your request and create each piece one layer at a time.</p></article></div></div></section>
-<section class="contact"><div><h2>Have an idea for a custom print?</h2><p>Send us your model, color, quantity, and postal address.</p></div><a class="contact-link" href="Main.html#top">MAKE A CUSTOM REQUEST ↗</a></section>
+<section class="contact"><div><h2>Have an idea for a custom print?</h2><p>Send us your model, color, quantity, and postal address.</p></div><button class="request-launch" type="button" data-open-request>MAKE A CUSTOM REQUEST <span aria-hidden="true">↗</span></button></section>
 </main>
+<dialog class="request-dialog" id="request-dialog" aria-labelledby="request-title">
+  <div class="request-content">
+    <div class="request-top"><div><div class="eyebrow">Your idea, made real</div><h2 id="request-title">What should we print?</h2><p>Email us with the details below and we'll follow up.</p></div><button class="request-close" type="button" id="close-request" aria-label="Close request details">×</button></div>
+    <div class="request-instructions"><p>Email your request to:</p><span class="request-email">InstaPrint1000@gmail.com</span><p>Include these details in your message:</p><pre class="request-template">Name:
+Product/model:
+Color:
+Quantity:
+Postal address:
+Other details:</pre></div>
+  </div>
+</dialog>
 <footer><a class="brand" href="Main.html#top" aria-label="Insta-Print home"><img src="Insta-Print Logo.png" alt="Insta-Print"></a><span>© 2026 Insta-Print. Made with care.</span><div class="footer-links"><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a><a href="Main.html#shop">Shop</a></div></footer>
+<script>
+  const requestDialog = document.getElementById('request-dialog');
+  const openRequestButtons = document.querySelectorAll('[data-open-request]');
+  const closeRequestButton = document.getElementById('close-request');
+
+  openRequestButtons.forEach((button) => {
+    button.addEventListener('click', () => requestDialog.showModal());
+  });
+
+  closeRequestButton.addEventListener('click', () => requestDialog.close());
+  requestDialog.addEventListener('click', (event) => {
+    if (event.target === requestDialog) requestDialog.close();
+  });
+</script>
 </body>
 </html>
