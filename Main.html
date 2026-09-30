@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insta-Print — Objects made with care</title>
+<link rel="icon" type="image/png" href="Insta-Print Image Logo.png">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+:root{--ink:#22271f;--muted:#72796d;--paper:#f6f6ef;--lime:#d9f17a;--line:#e3e5da}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:'DM Sans',sans-serif}a{color:inherit;text-decoration:none}.nav{height:72px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#f6f6efed;backdrop-filter:blur(10px);z-index:5;border-bottom:1px solid var(--line)}.logo{font:700 25px 'Space Grotesk';letter-spacing:-1.5px}.logo span{color:#849b36}.links{display:flex;gap:30px;font-size:13px;color:#555c50}.bag{border:1px solid;padding:10px 16px;border-radius:30px;font-size:13px}.hero{min-height:590px;padding:65px 8%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:25px;background:radial-gradient(ellipse at 73% 53%,#e5ebd1,transparent 48%)}.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700;color:#778d35}.eyebrow:before{content:'— ';}h1,h2{font-family:'Space Grotesk';letter-spacing:-3px}h1{font-size:clamp(49px,6vw,76px);line-height:1;margin:23px 0}.intro{max-width:410px;line-height:1.75;color:var(--muted);font-size:15px}.buttons{display:flex;gap:12px;margin-top:27px}.btn{background:var(--ink);color:white;padding:14px 19px;border-radius:4px;font-size:13px;font-weight:600;display:inline-block}.btn.outline{background:transparent;border:1px solid #bfc5b7;color:var(--ink)}.scene{height:420px;position:relative;display:grid;place-items:center;perspective:800px}.glow{position:absolute;width:310px;height:310px;border-radius:50%;background:#e2ebc8}.objects{position:relative;width:300px;height:300px;animation:bob 5s ease-in-out infinite;filter:drop-shadow(12px 18px 12px #313a2522)}.lamp{position:absolute;left:105px;top:39px;width:115px;height:171px;border-radius:60% 60% 18px 18px;background:repeating-linear-gradient(90deg,#e9ae68 0 9px,#d2914d 10px 13px);transform:rotate(-9deg)}.lamp:before{content:'';position:absolute;left:-17px;top:-9px;width:149px;height:25px;border-radius:50%;background:#f2c17e}.lamp:after{content:'';position:absolute;left:20px;bottom:-9px;width:75px;height:18px;border-radius:50%;background:#f8edcf}.pot{position:absolute;left:14px;bottom:20px;width:100px;height:84px;border-radius:9px 9px 28px 28px;background:repeating-linear-gradient(90deg,#829784 0 9px,#6e8271 10px 13px);transform:rotate(7deg)}.pot:before{content:'';position:absolute;top:-8px;left:-7px;width:114px;height:22px;border-radius:50%;background:#a8b89a}.leaf{position:absolute;left:43px;bottom:96px;width:17px;height:62px;background:#718b5c;border-radius:100% 0;transform:rotate(-30deg)}.leaf:after{content:'';position:absolute;width:17px;height:55px;left:27px;top:-14px;background:#859967;border-radius:100% 0;transform:rotate(38deg)}.tray{position:absolute;right:0;bottom:19px;width:110px;height:68px;border-radius:8px 8px 25px 25px;background:repeating-linear-gradient(90deg,#d28b6e 0 9px,#bd7458 10px 13px);transform:rotate(-8deg)}.tray:before{content:'';position:absolute;top:-9px;left:-5px;width:120px;height:22px;border-radius:50%;background:#e6a185}.float-label{position:absolute;background:white;padding:11px 14px;font-size:11px;box-shadow:0 8px 25px #2222}.float-label b{display:block;font-size:13px}.label1{right:0;top:72px}.label2{left:0;bottom:48px}@keyframes bob{50%{transform:translateY(-13px) rotateY(6deg)}}.ticker{background:var(--lime);padding:14px;overflow:hidden;white-space:nowrap;font:600 12px 'Space Grotesk';letter-spacing:1.5px}.ticker span{margin:0 25px}.shop{padding:82px 8%}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:28px}.head h2{font-size:39px;letter-spacing:-2px;margin:9px 0 0}.head p{font-size:13px;color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:white;padding:9px;border:1px solid #ecece5;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 12px 30px #2222}.art{height:220px;display:grid;place-items:center;background:#f0f1e9;position:relative}.art:before{content:'MADE TO ORDER';position:absolute;top:12px;left:11px;font-size:9px;letter-spacing:1px;color:#777}.shape{filter:drop-shadow(8px 12px 7px #2223)}.vase{width:82px;height:142px;background:repeating-linear-gradient(90deg,#819785 0 8px,#687e70 9px 12px);clip-path:polygon(28% 0,72% 0,78% 27%,100% 65%,85% 100%,15% 100%,0 65%,22% 27%)}.shade{width:96px;height:116px;border-radius:55px 55px 17px 17px;background:repeating-linear-gradient(90deg,#e7aa64 0 8px,#ce894b 9px 12px)}.trayart{width:118px;height:76px;border-radius:10px 10px 30px 30px;background:repeating-linear-gradient(90deg,#d58b70 0 9px,#bc7359 10px 13px)}.planter{width:100px;height:86px;border-radius:9px 9px 28px 28px;background:repeating-linear-gradient(90deg,#a59bc9 0 8px,#8980ae 9px 12px)}.details{display:flex;justify-content:space-between;padding:13px 4px 5px;font-size:13px;font-weight:600}.details small{display:block;color:#858a80;font-weight:400;margin-top:5px}.price{white-space:nowrap}.old{font-weight:400;color:#92968e;text-decoration:line-through}.sale{color:#82963c;margin-right:5px}.promo{background:#252c23;color:white;padding:65px 8%;display:grid;grid-template-columns:1.2fr 1fr;align-items:center;gap:25px}.promo h2{font-size:43px;line-height:1.08;letter-spacing:-2px;margin:16px 0}.promo p,.story p{color:#b9c0b3;font-size:14px;line-height:1.8;max-width:420px}.promo .btn{background:var(--lime);color:var(--ink);margin-top:10px}.promo-art{height:230px;display:grid;place-items:center;background:radial-gradient(ellipse,#59664d,transparent 65%);position:relative}.promo-art .vase{height:172px;width:100px;background:repeating-linear-gradient(90deg,#a0bd7c 0 8px,#7d9a61 9px 12px)}.badge{position:absolute;right:8%;top:15%;background:var(--lime);color:var(--ink);width:72px;height:72px;border-radius:50%;display:grid;place-items:center;text-align:center;font-size:11px;font-weight:700}.story{padding:78px 8%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:45px}.graphic{height:250px;background:#e8ecd9;display:grid;place-items:center;color:#819456;font:600 70px 'Space Grotesk';position:relative}.graphic:before{content:'';position:absolute;width:190px;height:190px;border:1px solid #aab68c;border-radius:50%}.story h2{font-size:38px;line-height:1.1;letter-spacing:-2px}.story p{color:var(--muted)}.newsletter{margin:0 8% 65px;padding:38px 5%;background:#e9eddd;display:flex;align-items:center;justify-content:space-between;gap:25px}.newsletter h3{font:600 24px 'Space Grotesk';margin:0 0 7px}.newsletter p{font-size:13px;color:var(--muted);margin:0}.form{display:flex;border-bottom:1px solid #89917f;min-width:310px}.form input{flex:1;min-width:0;border:0;background:transparent;padding:12px 4px;outline:0;font:13px 'DM Sans'}.form button{border:0;background:transparent;font-weight:700;cursor:pointer}footer{padding:26px 8%;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}.footlinks{display:flex;gap:18px}
+@media(max-width:800px){.links{gap:15px}.hero{grid-template-columns:1fr;padding-top:55px}.scene{height:350px}.grid{grid-template-columns:repeat(2,1fr)}.promo{grid-template-columns:1fr}.promo-art{height:180px}.story{grid-template-columns:1fr}.newsletter{align-items:flex-start;flex-direction:column}}@media(max-width:520px){.nav{padding:0 5%}.links{display:none}.hero{padding:48px 6% 20px}h1{letter-spacing:-3px}.scene{transform:scale(.9);margin:-10px -18px}.shop{padding:60px 5%}.head{display:block}.head h2{font-size:33px}.art{height:170px}.promo{padding:55px 7%}.promo h2{font-size:36px}.story{padding:60px 7%}.newsletter{margin:0 5% 45px;padding:28px 7%}.form{min-width:0;width:100%}footer{padding:24px 6%;flex-wrap:wrap;gap:14px}.footlinks{gap:11px}}
+</style>
+<style>
+:root{--ink:#171717;--muted:#514d47;--paper:#fff8ed;--lime:#ff5738;--line:#dfd4c7}
+body{font-family:'DM Sans',sans-serif;background-color:var(--paper)}
+.nav{background:#fff8edee;border-bottom:2px solid var(--ink)}
+.category-filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 30px}
+.category-filters button{padding:10px 16px;border:2px solid #171717;background:transparent;color:#171717;font:700 13px 'DM Sans',sans-serif;cursor:pointer}
+.category-filters button[aria-pressed="true"]{background:#171717;color:#fff}
+.category-filters button:hover:not([aria-pressed="true"]){background:#ffd84f}
+.logo{display:flex;align-items:center;font-weight:700;letter-spacing:0}
+.logo img{display:block;width:auto;height:44px;max-width:180px;object-fit:contain}
+.nav .logo{position:relative;width:200px;height:64px;flex:0 0 200px;overflow:hidden}
+.nav .logo img{position:absolute;top:50%;left:50%;width:166px;height:auto;max-width:none;transform:translate(-50%,-50%)}
+.logo span,.eyebrow{color:#f24b2b}
+.hero{min-height:650px;background:#ff5738;color:#fff;padding-top:72px;padding-bottom:72px;overflow:hidden}
+.hero .eyebrow{color:#fff}
+.hero h1{font-size:clamp(58px,7.5vw,100px);line-height:.94;font-weight:700;letter-spacing:0}
+.intro{color:#fff;opacity:.9;font-size:17px}
+.btn{background:#171717;border:2px solid #171717;border-radius:0;padding:15px 21px;font-weight:700;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-3px);background:#284cff;border-color:#284cff}
+.btn.outline{color:#171717;background:#fff8ed;border-color:#171717}
+.btn.outline:hover{color:#fff;background:#171717}
+.scene{background:#ff795f;border:2px solid #171717;box-shadow:10px 10px 0 #171717;transform:rotate(2deg)}
+.hero-slide-dots{position:absolute;z-index:3;bottom:14px;left:50%;display:flex;align-items:center;gap:10px;transform:translateX(-50%) rotate(-2deg)}
+.hero-slide-dot{position:relative;width:10px;height:10px;flex:0 0 10px;overflow:hidden;padding:0;border:0;border-radius:999px;background:#fff9;color:transparent;cursor:pointer;transition:width .2s,flex-basis .2s,background .2s}
+.hero-slide-dot[aria-current="true"]{width:60px;flex-basis:60px;background:#fff7}
+.hero-slide-dot span{position:absolute;inset:0;border-radius:inherit;background:#fff;transform:scaleX(0);transform-origin:left center}
+.hero-slide-dot[aria-current="true"] span{animation:hero-dot-fill 5s linear forwards}
+@keyframes hero-dot-fill{to{transform:scaleX(1)}}
+@media(prefers-reduced-motion:reduce){.hero-slide-dot[aria-current="true"] span{animation:none;transform:scaleX(1)}}
+.scene .float-label{color:#171717}
+.glow{background:#ffd84f}
+.objects>div{transition:opacity .45s}
+.objects[data-model="lamp"] .pot,.objects[data-model="lamp"] .leaf,.objects[data-model="lamp"] .tray,.objects[data-model="vase"] .lamp,.objects[data-model="vase"] .tray,.objects[data-model="tray"] .lamp,.objects[data-model="tray"] .pot,.objects[data-model="tray"] .leaf,.objects[data-model="planter"] .lamp,.objects[data-model="planter"] .tray{opacity:0;visibility:hidden}
+.ticker{background:#284cff;color:#fff;border-block:2px solid #171717;font-weight:700}
+.shop{background:#fff8ed;border-bottom:2px solid #171717}
+.head h2,.promo h2,.story h2{font-weight:700;letter-spacing:0}
+.head h2{font-size:clamp(38px,5vw,60px)}
+.card{border:2px solid #171717;background:#fff;border-radius:0;box-shadow:5px 5px 0 #171717;transition:transform .2s,box-shadow .2s}
+.card[hidden]{display:none}
+.empty-state{grid-column:1/-1;margin:0;padding:20px 0;color:#514d47;font-size:15px}
+.card:hover{transform:translate(-3px,-3px);box-shadow:8px 8px 0 #171717}
+.art{border-bottom:2px solid #171717}
+.product-gallery{position:relative;display:flex;align-items:center;justify-content:space-between;padding:0 12px;background:#f1eee8}
+.gallery-placeholder{position:absolute;inset:0;background:#f1eee8}
+.gallery-arrow{position:relative;z-index:1;display:grid;width:38px;height:38px;place-items:center;border:2px solid #171717;background:#ffd84f;color:#171717;font-size:22px;line-height:1;cursor:pointer}
+.gallery-arrow:hover{background:#ff5738}
+.gallery-count{position:absolute;z-index:1;bottom:12px;left:50%;padding:4px 8px;border:1px solid #171717;background:#fff8ed;font-size:11px;font-weight:700;transform:translateX(-50%)}
+.shop-photo-slider{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;align-items:center;gap:12px;margin-top:30px;padding:14px;border:2px solid #171717;background:#f1eee8}
+.shop-photo-slider[hidden]{display:none}
+.shop-photo-frame{position:relative;display:grid;min-height:210px;align-items:end;overflow:hidden;background:#f1eee8}
+.shop-photo-placeholder{position:absolute;inset:0;background:#f1eee8}
+.shop-photo-caption{position:relative;z-index:1;justify-self:center;display:grid;gap:3px;margin-bottom:12px;padding:8px 12px;border:1px solid #171717;background:#fff8ed;text-align:center;font-size:12px}
+.sale{font-weight:700;color:#f24b2b}
+.promo{background:#284cff;color:white;border-block:2px solid #171717}
+.promo .eyebrow{color:#ffd84f}
+.promo p{color:#e1e5ff}
+.promo .btn{background:#ffd84f;color:#171717;border-color:#171717}
+.promo .btn:hover{background:#ff5738;color:#fff}
+.promo-art{background:#ff795f;border:2px solid #171717;box-shadow:8px 8px 0 #171717}
+.story{background:#d9e6b1}
+.graphic{background:#ff5738;color:#171717;border:2px solid #171717;box-shadow:8px 8px 0 #171717}
+footer{border-top:2px solid #171717}
+.request-launch{position:fixed;z-index:10;right:24px;bottom:24px;display:flex;align-items:center;gap:10px;padding:16px 20px;border:2px solid #171717;background:#ffd84f;color:#171717;box-shadow:5px 5px 0 #171717;font:700 13px 'DM Sans',sans-serif;letter-spacing:.5px;cursor:pointer;transition:transform .2s,box-shadow .2s,opacity .35s,filter .35s,visibility 0s}
+.request-launch:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #171717}
+body.footer-visible .request-launch{opacity:0;visibility:hidden;filter:blur(8px);transform:translateY(8px);pointer-events:none;transition:transform .35s,opacity .35s,filter .35s,visibility 0s linear .35s}
+.request-dialog{width:min(560px,calc(100% - 28px));max-height:calc(100% - 28px);padding:0;border:2px solid #171717;background:#fff8ed;color:#171717;box-shadow:10px 10px 0 #171717}
+.request-dialog::backdrop{background:#151515aa;backdrop-filter:blur(3px)}
+.request-content{padding:30px}
+.request-top{display:flex;justify-content:space-between;align-items:start;gap:20px}
+.request-top h2{margin:4px 0 8px;font:700 36px/1.05 'Space Grotesk',sans-serif;letter-spacing:0}
+.request-top p{margin:0 0 22px;color:#514d47;line-height:1.55}
+.request-close{width:38px;height:38px;flex:0 0 38px;border:2px solid #171717;background:transparent;font-size:22px;cursor:pointer}
+.request-instructions{display:grid;gap:10px}
+.request-instructions p{margin:0;color:#514d47;line-height:1.5}
+.request-email{width:fit-content;color:#171717;font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.request-template{margin:0;padding:16px;border:2px solid #171717;background:#ffd84f;color:#171717;font:500 14px/1.8 'DM Sans',sans-serif;white-space:pre-wrap}
+@media(max-width:800px){.hero{min-height:auto;padding-top:55px;padding-bottom:55px}.scene{transform:scale(.96) rotate(2deg)}.request-launch{right:14px;bottom:14px}}
+@media(max-width:520px){.hero{padding-top:48px;padding-bottom:40px}.hero h1{font-size:57px}.scene{transform:scale(.88) rotate(2deg);margin:-12px -18px}.request-launch{right:12px;bottom:12px;padding:14px 16px}.request-content{padding:22px}.request-top h2{font-size:31px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<button class="request-launch" type="button" id="open-request">MAKE A CUSTOM REQUEST <span aria-hidden="true">↗</span></button>
+<dialog class="request-dialog" id="request-dialog" aria-labelledby="request-title">
+<div class="request-content">
+<div class="request-top"><div><div class="eyebrow">Your idea, made real</div><h2 id="request-title">What should we print?</h2><p>Email us with the details below and we'll follow up.</p></div><button class="request-close" type="button" id="close-request" aria-label="Close request details">×</button></div>
+<div class="request-instructions"><p>Email your request to:</p><span class="request-email">andreibri2014@gmail.com</span><p>Include these details in your message:</p><pre class="request-template">Name:
+Product/model:
+Color:
+Quantity:
+Postal address:
+Other details:</pre></div>
+</div>
+</dialog>
+<header class="nav" id="top"><a class="logo" href="#top" aria-label="Insta-Print home"><img src="Insta-Print Logo Banner.png" alt="Insta-Print"></a><nav class="links"><a href="#shop">Shop all</a><a href="#about">Our process</a></nav><a class="bag" href="#shop">Bag (0) ↗</a></header>
+<main>
+<section class="hero"><div><div class="eyebrow">Designed with intention</div><h1>Objects with<br>a little more<br>character.</h1><p class="intro">Thoughtful everyday pieces, printed layer by layer. Made to bring a little joy to the spaces you call home.</p><div class="buttons"><a class="btn" href="#shop">Explore the collection ↗</a><a class="btn outline" href="#about">How it's made</a></div></div><div class="scene" aria-label="Animated 3D printed home objects"><div class="glow"></div><div class="objects"><div class="lamp"></div><div class="pot"></div><div class="leaf"></div><div class="tray"></div></div><div class="float-label label1"><b>Made to feel good.</b>Printed responsibly</div><div class="float-label label2"><b>Meet your new favourite.</b>Small-batch objects</div><div class="hero-slide-dots" role="group" aria-label="Choose featured product"><button class="hero-slide-dot" type="button" data-hero-slide="0" aria-label="Show Ripple Table Lamp" aria-current="true"><span></span></button><button class="hero-slide-dot" type="button" data-hero-slide="1" aria-label="Show Sunday Vase" aria-current="false"><span></span></button><button class="hero-slide-dot" type="button" data-hero-slide="2" aria-label="Show Catch-All Tray" aria-current="false"><span></span></button><button class="hero-slide-dot" type="button" data-hero-slide="3" aria-label="Show Little Buddy Planter" aria-current="false"><span></span></button></div></div></section>
+<div class="ticker"><span>MADE LOCALLY ✳</span><span>PRINTED ON DEMAND ✳</span><span>DESIGNED TO LAST ✳</span><span>LESS WASTE, MORE WONDER ✳</span><span>MADE LOCALLY ✳</span><span>PRINTED ON DEMAND ✳</span><span>DESIGNED TO LAST ✳</span></div>
+<section class="shop" id="shop"><div class="head"><div><div class="eyebrow">Fresh from the printer</div><h2>Newly out</h2></div><p>Designed for daily life. Loved for a long time.</p></div><div class="category-filters" role="group" aria-label="Filter newly released products"><button type="button" data-shop-filter="all" aria-pressed="true">All</button><button type="button" data-shop-filter="vases" aria-pressed="false">Vases</button><button type="button" data-shop-filter="decor" aria-pressed="false">Decor</button><button type="button" data-shop-filter="holidays" aria-pressed="false">Holidays</button><button type="button" data-shop-filter="other" aria-pressed="false">Other</button></div><div class="grid">
+<article class="card" data-category="decor"><div class="art product-gallery" data-gallery data-product-name="Ripple Table Lamp"><div class="gallery-placeholder" role="img" aria-label="Blank image 1 of 2 for Ripple Table Lamp"></div><button class="gallery-arrow" type="button" data-gallery-prev aria-label="Previous Ripple Table Lamp image">‹</button><span class="gallery-count" aria-live="polite">1 / 2</span><button class="gallery-arrow" type="button" data-gallery-next aria-label="Next Ripple Table Lamp image">›</button></div><div class="details"><div>Ripple Table Lamp<small>Warm sand · PLA</small></div><div class="price"><span class="sale">$68</span><span class="old">$82</span></div></div></article>
+<article class="card" data-category="vases"><div class="art product-gallery" data-gallery data-product-name="Sunday Vase"><div class="gallery-placeholder" role="img" aria-label="Blank image 1 of 2 for Sunday Vase"></div><button class="gallery-arrow" type="button" data-gallery-prev aria-label="Previous Sunday Vase image">‹</button><span class="gallery-count" aria-live="polite">1 / 2</span><button class="gallery-arrow" type="button" data-gallery-next aria-label="Next Sunday Vase image">›</button></div><div class="details"><div>Sunday Vase<small>Sage · PLA</small></div><div class="price"><span class="sale">$32</span><span class="old">$39</span></div></div></article>
+<article class="card" data-category="decor"><div class="art product-gallery" data-gallery data-product-name="Catch-All Tray"><div class="gallery-placeholder" role="img" aria-label="Blank image 1 of 2 for Catch-All Tray"></div><button class="gallery-arrow" type="button" data-gallery-prev aria-label="Previous Catch-All Tray image">‹</button><span class="gallery-count" aria-live="polite">1 / 2</span><button class="gallery-arrow" type="button" data-gallery-next aria-label="Next Catch-All Tray image">›</button></div><div class="details"><div>Catch-All Tray<small>Clay · PLA</small></div><div class="price"><span class="sale">$24</span><span class="old">$30</span></div></div></article>
+<article class="card" data-category="decor"><div class="art product-gallery" data-gallery data-product-name="Little Buddy Planter"><div class="gallery-placeholder" role="img" aria-label="Blank image 1 of 2 for Little Buddy Planter"></div><button class="gallery-arrow" type="button" data-gallery-prev aria-label="Previous Little Buddy Planter image">‹</button><span class="gallery-count" aria-live="polite">1 / 2</span><button class="gallery-arrow" type="button" data-gallery-next aria-label="Next Little Buddy Planter image">›</button></div><div class="details"><div>Little Buddy Planter<small>Lavender · PLA</small></div><div class="price"><span class="sale">$28</span><span class="old">$35</span></div></div></article>
+<p class="empty-state" id="empty-state" aria-live="polite" hidden>No products in this category yet. Check back soon.</p>
+</div><div class="shop-photo-slider" id="shop-photo-slider" aria-label="Browse product photos"><button class="gallery-arrow" type="button" data-shop-photo-prev aria-label="Previous product photo">‹</button><div class="shop-photo-frame"><div class="shop-photo-placeholder" aria-hidden="true"></div><div class="shop-photo-caption" aria-live="polite"><strong id="shop-photo-name">Ripple Table Lamp</strong><span id="shop-photo-count">Photo 1 of 2</span></div></div><button class="gallery-arrow" type="button" data-shop-photo-next aria-label="Next product photo">›</button></div></section>
+<section class="promo"><div><div class="eyebrow">A brighter kind of home</div><h2>Your shelf called.<br>It wants a refresh.</h2><p>Find your next conversation starter in our limited-run colour drop. Made in small batches, so when they're gone, they're gone.</p><a class="btn" href="#shop">Shop the colour drop ↗</a></div><div class="promo-art"><div class="shape vase"></div><div class="badge">NEW<br>COLOURS<br>IN ✳</div></div></section>
+<section class="story" id="about"><div class="graphic">↗</div><div><div class="eyebrow">A softer footprint</div><h2>Less waste.<br>More thoughtful things.</h2><p>Every Insta-Print piece is made to order in our little studio. We use plant-based PLA and print only what you need — no warehouses full of things waiting to be wanted.</p><a class="btn" href="About.html">Get to know us ↗</a></div></section>
+</main><footer><a class="logo" href="#top" aria-label="Insta-Print home"><img src="Insta-Print Logo.png" alt="Insta-Print"></a><span>© 2026 Insta-Print. Made with care.</span><div class="footlinks"><a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTube</a><a href="#about">Contact</a><a href="#about">Shipping & returns</a></div></footer>
+<script>
+const heroObjects=document.querySelector('.scene .objects');
+const heroModelName=document.querySelector('.scene .label1 b');
+const heroModels=[
+{model:'lamp',name:'Ripple Table Lamp'},
+{model:'vase',name:'Sunday Vase'},
+{model:'tray',name:'Catch-All Tray'},
+{model:'planter',name:'Little Buddy Planter'}
+];
+let currentHeroModel=0;
+const heroSlideDots=document.querySelectorAll('[data-hero-slide]');
+let heroRotationTimer;
+const updateHeroModel=()=>{
+const model=heroModels[currentHeroModel];
+heroObjects.dataset.model=model.model;
+heroModelName.textContent=model.name;
+heroSlideDots.forEach((dot,index)=>{
+dot.setAttribute('aria-current',String(index===currentHeroModel));
+if(index===currentHeroModel){
+const progress=dot.querySelector('span');
+progress.style.animation='none';
+void progress.offsetWidth;
+progress.style.animation='';
+}
+});
+};
+const startHeroRotation=()=>{
+window.clearInterval(heroRotationTimer);
+heroRotationTimer=window.setInterval(()=>{
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+currentHeroModel=(currentHeroModel+1)%heroModels.length;
+updateHeroModel();
+},5000);
+};
+updateHeroModel();
+startHeroRotation();
+heroSlideDots.forEach(dot=>dot.addEventListener('click',()=>{
+currentHeroModel=Number(dot.dataset.heroSlide);
+updateHeroModel();
+startHeroRotation();
+}));
+const shopFilters=document.querySelectorAll('.category-filters [data-shop-filter]');
+const productCards=document.querySelectorAll('.card[data-category]');
+const emptyState=document.getElementById('empty-state');
+const shopPhotoSlider=document.getElementById('shop-photo-slider');
+const shopPhotoName=document.getElementById('shop-photo-name');
+const shopPhotoCount=document.getElementById('shop-photo-count');
+let shopPhotoSlides=[];
+let currentShopPhoto=0;
+const updateShopPhotoSlider=()=>{
+const visibleCards=[...productCards].filter(card=>!card.hidden);
+shopPhotoSlides=visibleCards.flatMap(card=>Array.from({length:2},(_,imageIndex)=>({name:card.querySelector('[data-gallery]').dataset.productName,imageIndex})));
+shopPhotoSlider.hidden=shopPhotoSlides.length===0;
+if(!shopPhotoSlides.length)return;
+currentShopPhoto=(currentShopPhoto+shopPhotoSlides.length)%shopPhotoSlides.length;
+const slide=shopPhotoSlides[currentShopPhoto];
+shopPhotoName.textContent=slide.name;
+shopPhotoCount.textContent=`Photo ${slide.imageIndex+1} of 2 · ${currentShopPhoto+1} / ${shopPhotoSlides.length}`;
+};
+document.querySelector('[data-shop-photo-prev]').addEventListener('click',()=>{
+currentShopPhoto=(currentShopPhoto-1+shopPhotoSlides.length)%shopPhotoSlides.length;
+updateShopPhotoSlider();
+});
+document.querySelector('[data-shop-photo-next]').addEventListener('click',()=>{
+currentShopPhoto=(currentShopPhoto+1)%shopPhotoSlides.length;
+updateShopPhotoSlider();
+});
+document.querySelectorAll('[data-gallery]').forEach(gallery=>{
+let currentImage=0;
+const imageCount=2;
+const placeholder=gallery.querySelector('.gallery-placeholder');
+const counter=gallery.querySelector('.gallery-count');
+const showImage=index=>{
+currentImage=(index+imageCount)%imageCount;
+counter.textContent=`${currentImage+1} / ${imageCount}`;
+placeholder.setAttribute('aria-label',`Blank image ${currentImage+1} of ${imageCount} for ${gallery.dataset.productName}`);
+};
+gallery.querySelector('[data-gallery-prev]').addEventListener('click',()=>showImage(currentImage-1));
+gallery.querySelector('[data-gallery-next]').addEventListener('click',()=>showImage(currentImage+1));
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+window.setInterval(()=>{
+if(!gallery.matches(':hover')&&!gallery.contains(document.activeElement))showImage(currentImage+1);
+},5000);
+}
+});
+shopFilters.forEach(filter=>filter.addEventListener('click',()=>{
+const category=filter.dataset.shopFilter;
+let visibleCount=0;
+productCards.forEach(card=>{
+card.hidden=category!=='all'&&card.dataset.category!==category;
+if(!card.hidden)visibleCount++;
+});
+emptyState.hidden=visibleCount>0;
+currentShopPhoto=0;
+updateShopPhotoSlider();
+shopFilters.forEach(button=>button.setAttribute('aria-pressed',String(button===filter)));
+}));
+updateShopPhotoSlider();
+const requestDialog=document.getElementById('request-dialog');
+const updateRequestButtonVisibility=()=>{
+const footerTop=document.querySelector('footer').getBoundingClientRect().top;
+document.body.classList.toggle('footer-visible',footerTop<window.innerHeight);
+};
+window.addEventListener('scroll',updateRequestButtonVisibility,{passive:true});
+window.addEventListener('resize',updateRequestButtonVisibility);
+updateRequestButtonVisibility();
+document.getElementById('open-request').addEventListener('click',()=>requestDialog.showModal());
+document.getElementById('close-request').addEventListener('click',()=>requestDialog.close());
+requestDialog.addEventListener('click',event=>{if(event.target===requestDialog)requestDialog.close()});
+</script>
+</body></html>
